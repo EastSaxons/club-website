@@ -1,24 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gallery - East Saxons CC</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | East Saxons CC</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: {
+          sans: ['Poppins', 'sans-serif'],
+          heading: ['Orbitron', 'sans-serif'],
+        },
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#1e3c72', dark: '#142850', light: '#2a5298' },
+            gold: { DEFAULT: '#f5c518', dark: '#d4a910' },
+          },
+        },
+      },
+    }
+  </script>
 </head>
-<body>
-<header>
-    <h1>🏏 East Saxons CC</h1>
-    <p class="caption">Be united and thrive for victory</p>
-</header>
+<body class="bg-gray-50 text-gray-700 min-h-screen flex flex-col">
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="teams.html">Teams</a>
-    <a href="players.html">Players</a>
-    <a href="schedule.html">Schedule</a>
-    <a href="results.html">Results</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
-</nav>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-navy shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+
+        <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+          <img src="images/east-saxons-cc-logo.jpeg" alt="East Saxons CC" class="h-10 w-auto rounded object-contain" />
+          <div class="leading-tight">
+            <span class="block font-heading text-white text-sm font-medium tracking-wide">East Saxons CC</span>
+            <span class="block text-gold text-xs leading-tight">Be united and thrive for victory</span>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-7">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="teams.html" class="nav-link">Teams</a>
+          <a href="players.html" class="nav-link">Players</a>
+          <a href="schedule.html" class="nav-link">Schedule</a>
+          <a href="results.html" class="nav-link">Results</a>
+          <a href="gallery.html" class="nav-link active">Gallery</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <button id="navToggle" class="nav-toggle md:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-white/10 transition-colors" aria-label="Open navigation" aria-expanded="false">
+          <span class="bar bar-1 block w-6 h-0.5 bg-white rounded-full"></span>
+          <span class="bar bar-2 block w-6 h-0.5 bg-white rounded-full"></span>
+          <span class="bar bar-3 block w-6 h-0.5 bg-white rounded-full"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileNav" class="hidden md:hidden bg-navy-dark border-t border-white/10">
+      <div class="max-w-6xl mx-auto px-5 divide-y divide-white/10">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="teams.html" class="mobile-nav-link">Teams</a>
+        <a href="players.html" class="mobile-nav-link">Players</a>
+        <a href="schedule.html" class="mobile-nav-link">Schedule</a>
+        <a href="results.html" class="mobile-nav-link">Results</a>
+        <a href="gallery.html" class="mobile-nav-link active">Gallery</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <div class="bg-navy">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+      <h1 class="font-heading text-white text-2xl sm:text-3xl mb-1">Gallery</h1>
+      <p class="text-white/50 text-sm">Match photos &amp; club moments</p>
+    </div>
+  </div>
+
+  <main class="flex-1 py-12 sm:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+      <div class="flex items-center gap-4 mb-8">
+        <h2 class="font-heading text-navy text-lg whitespace-nowrap">Photos</h2>
+        <div class="flex-1 h-px bg-gold/60"></div>
+      </div>
+
+      <!-- Placeholder grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div class="aspect-square bg-navy/5 rounded-xl border border-navy/10 flex flex-col items-center justify-center gap-2 text-navy/25 hover:bg-navy/10 transition-colors cursor-default">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        </div>
+        <div class="aspect-square bg-navy/5 rounded-xl border border-navy/10 flex flex-col items-center justify-center gap-2 text-navy/25 hover:bg-navy/10 transition-colors cursor-default">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        </div>
+        <div class="aspect-square bg-navy/5 rounded-xl border border-navy/10 flex flex-col items-center justify-center gap-2 text-navy/25 hover:bg-navy/10 transition-colors cursor-default">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        </div>
+        <div class="aspect-square bg-navy/5 rounded-xl border border-navy/10 flex flex-col items-center justify-center gap-2 text-navy/25 hover:bg-navy/10 transition-colors cursor-default">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        </div>
+        <div class="aspect-square bg-navy/5 rounded-xl border border-navy/10 flex flex-col items-center justify-center gap-2 text-navy/25 hover:bg-navy/10 transition-colors cursor-default">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        </div>
+        <div class="aspect-square bg-navy/5 rounded-xl border border-navy/10 flex flex-col items-center justify-center gap-2 text-navy/25 hover:bg-navy/10 transition-colors cursor-default">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        </div>
+      </div>
+
+      <p class="text-center text-gray-400 italic text-sm mt-8">Photos coming soon&hellip;</p>
+
+    </div>
+  </main>
+
+  <footer class="bg-navy-dark text-white/50 text-center py-5 text-sm">
+    <p>&copy; 2026 East Saxons CC &bull; Follow us on Instagram, Twitter &amp; Facebook</p>
+  </footer>
+
+  <script src="nav.js" defer></script>
+</body>
+</html>
