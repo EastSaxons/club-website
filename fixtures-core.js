@@ -3,6 +3,7 @@
 
 export const PLAY_CRICKET_HOME = "https://eastsaxons.play-cricket.com/home";
 export const PLAY_CRICKET_MATCHES = "https://eastsaxons.play-cricket.com/Matches";
+export const PLAY_CRICKET_WEEKLY = `${PLAY_CRICKET_MATCHES}?tab=Weekly`;
 
 export const TEAM_LABELS = { all: "All teams", "1st": "1st XI", "2nd": "2nd XI", "3rd": "3rd XI", other: "Other" };
 export const OUTCOME_LABELS = {

@@ -11,6 +11,7 @@
 import {
   PLAY_CRICKET_HOME,
   PLAY_CRICKET_MATCHES,
+  PLAY_CRICKET_WEEKLY,
   TEAM_LABELS,
   OUTCOME_LABELS,
   londonToday,
@@ -160,13 +161,13 @@ function errorState(el, retry) {
   el.querySelector("[data-es-retry]").addEventListener("click", retry);
 }
 
-function emptyState(title, body, withClear) {
+function emptyState(title, body, withClear, playCricketUrl) {
   return `<div class="es-state">
     <p class="es-state__title">${title}</p>
     <p>${body}</p>
     <div class="es-state__actions">
       ${withClear ? '<button type="button" class="es-btn es-btn--ghost" data-es-clear>Show all fixtures</button>' : ""}
-      <a class="es-btn" href="${PLAY_CRICKET_MATCHES}" target="_blank" rel="noopener noreferrer">Play-Cricket ${icon.ext}</a>
+      <a class="es-btn" href="${playCricketUrl}" target="_blank" rel="noopener noreferrer">Play-Cricket ${icon.ext}</a>
     </div>
   </div>`;
 }
@@ -184,7 +185,7 @@ function writeParams({ team, month }) {
   history.replaceState(null, "", `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash}`);
 }
 
-function mountFilterableList(el, doc, pool, { noun, emptyAll, renderItem, groupDesc }) {
+function mountFilterableList(el, doc, pool, { noun, emptyAll, renderItem, groupDesc, playCricketUrl = PLAY_CRICKET_WEEKLY }) {
   const teamKeys = teamKeysIn(pool);
   let state = readParams();
   if (!teamKeys.includes(state.team)) state.team = "all";
@@ -203,8 +204,8 @@ function mountFilterableList(el, doc, pool, { noun, emptyAll, renderItem, groupD
       .join("");
 
     let body;
-    if (pool.length === 0) body = emptyState(emptyAll.title, emptyAll.body, false);
-    else if (list.length === 0) body = emptyState(`No ${noun}s match these filters`, "Try another team or month.", true);
+    if (pool.length === 0) body = emptyState(emptyAll.title, emptyAll.body, false, playCricketUrl);
+    else if (list.length === 0) body = emptyState(`No ${noun}s match these filters`, "Try another team or month.", true, playCricketUrl);
     else {
       const groups = new Map();
       for (const m of list) {
@@ -279,6 +280,7 @@ async function initResults(el) {
     const pool = resultMatches(doc.matches, londonToday());
     mountFilterableList(el, doc, pool, {
       noun: "result",
+      playCricketUrl: PLAY_CRICKET_MATCHES,
       emptyAll: {
         title: "No results recorded yet",
         body: `Check Play-Cricket for the latest results.`,
@@ -299,7 +301,7 @@ async function initNextMatch(el) {
     const m = nextMatch(doc.matches, londonToday());
     el.removeAttribute("aria-busy");
     if (!m) {
-      el.innerHTML = `${fallback}<p class="es-next__fallback-link"><a href="${PLAY_CRICKET_MATCHES}" target="_blank" rel="noopener noreferrer">Check Play-Cricket for the latest fixtures ${icon.ext}</a></p>`;
+      el.innerHTML = `${fallback}<p class="es-next__fallback-link"><a href="${PLAY_CRICKET_WEEKLY}" target="_blank" rel="noopener noreferrer">Check Play-Cricket for the latest fixtures ${icon.ext}</a></p>`;
       return;
     }
     const isSample = doc.sample || String(m.id).startsWith("sample-");
@@ -348,7 +350,7 @@ async function initUpcomingTeams(el) {
     });
     el.innerHTML = `<div class="es-minis">${cards.join("")}</div>`;
   } catch {
-    el.innerHTML = `<p class="es-meta">Upcoming fixtures are on <a href="${PLAY_CRICKET_MATCHES}" target="_blank" rel="noopener noreferrer">Play-Cricket</a>.</p>`;
+    el.innerHTML = `<p class="es-meta">Upcoming fixtures are on <a href="${PLAY_CRICKET_WEEKLY}" target="_blank" rel="noopener noreferrer">Play-Cricket</a>.</p>`;
   }
 }
 
