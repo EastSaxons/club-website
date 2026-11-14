@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Results | East Saxons CC</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="fixtures.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -74,7 +75,7 @@
   <div class="bg-navy">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
       <h1 class="font-heading text-white text-2xl sm:text-3xl mb-1">Match Results</h1>
-      <p class="text-white/50 text-sm">East Saxons Cricket Club &mdash; 2026 Season</p>
+      <p class="text-white/50 text-sm">East Saxons Cricket Club</p>
     </div>
   </div>
 
@@ -90,28 +91,12 @@
           <span class="flex items-center gap-1.5"><span class="inline-block w-2.5 h-2.5 rounded-sm bg-gray-100 border border-gray-300"></span> N/R</span>
         </div>
       </div>
-
-      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="bg-navy text-white">
-                <th class="font-heading text-xs uppercase tracking-wider text-left px-5 py-4 font-medium">Date</th>
-                <th class="font-heading text-xs uppercase tracking-wider text-left px-5 py-4 font-medium">Opposition</th>
-                <th class="font-heading text-xs uppercase tracking-wider text-left px-5 py-4 font-medium">Result</th>
-                <th class="font-heading text-xs uppercase tracking-wider text-left px-5 py-4 font-medium hidden sm:table-cell">Score</th>
-                <th class="font-heading text-xs uppercase tracking-wider text-left px-5 py-4 font-medium hidden lg:table-cell">Competition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td colspan="5" class="px-5 py-14 text-center text-gray-400 italic text-sm">
-                  No results recorded yet for the 2026 season&hellip;
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <!-- Results with team + month filters (fixtures.js reads data/fixtures.json) -->
+      <div data-es-results>
+        <noscript>
+          <p class="text-sm text-gray-500 text-center">Fixtures need JavaScript. View them on
+            <a class="text-navy underline" href="https://eastsaxons.play-cricket.com/Matches">Play-Cricket</a>.</p>
+        </noscript>
       </div>
 
     </div>
@@ -121,6 +106,7 @@
     <p>&copy; 2026 East Saxons CC &bull; Follow us on Instagram, Twitter &amp; Facebook</p>
   </footer>
 
+  <script type="module" src="fixtures.js"></script>
   <script src="nav.js" defer></script>
 </body>
 </html>

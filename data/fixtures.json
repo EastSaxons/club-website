@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "source": "play-cricket",
+  "sample": false,
+  "generatedAt": null,
+  "seasons": [],
+  "club": {
+    "name": "East Saxons CC",
+    "playCricketUrl": "https://eastsaxons.play-cricket.com"
+  },
+  "matches": []
+}

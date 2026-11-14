@@ -1,0 +1,54 @@
+name: Sync Play-Cricket fixtures
+
+on:
+  schedule:
+    - cron: "15 5 * * *" # every day at 05:15 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-fixtures
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch and normalise fixtures
+        env:
+          # Token lives only in GitHub Actions secrets - it is never written to the repo or the website.
+          PLAY_CRICKET_API_TOKEN: ${{ secrets.PLAY_CRICKET_API_TOKEN }}
+          PLAY_CRICKET_SITE_ID: ${{ vars.PLAY_CRICKET_SITE_ID }}
+          PLAY_CRICKET_CLUB_ID: ${{ vars.PLAY_CRICKET_CLUB_ID }}
+        run: node scripts/sync-fixtures.mjs
+
+      - name: Commit updated fixtures
+        id: commit
+        run: |
+          if git diff --quiet -- data/fixtures.json; then
+            echo "No fixture changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/fixtures.json
+          git commit -m "chore: sync Play-Cricket fixtures"
+          git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild GitHub Pages
+        if: steps.commit.outputs.pushed == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"

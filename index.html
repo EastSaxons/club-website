@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home | East Saxons CC</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="fixtures.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@500&display=swap"
     rel="stylesheet" />
@@ -83,23 +84,37 @@
     </div>
     <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-navy-dark/60 to-transparent"></div>
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28 text-center">
-      <div
-        class="inline-flex items-center gap-2.5 bg-gold/10 text-gold text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full border border-gold/25 mb-8">
-        <span class="w-2 h-2 bg-gold rounded-full animate-pulse"></span>
-        Next Match
+      <!-- Filled from data/fixtures.json by fixtures.js; original markup below is the fallback -->
+      <div data-es-next-match>
+        <div
+          class="inline-flex items-center gap-2.5 bg-gold/10 text-gold text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full border border-gold/25 mb-8">
+          <span class="w-2 h-2 bg-gold rounded-full animate-pulse"></span>
+          Next Match
+        </div>
+        <h1 class="font-heading text-white text-3xl sm:text-4xl md:text-5xl font-medium leading-snug mb-5">
+          East Saxons CC 1's<br />
+          <span class="text-gold">vs TBD</span>
+        </h1>
+        <p class="text-white/50 text-base sm:text-lg max-w-md mx-auto">
+          Brentwood, Essex &mdash; Fixture details to be announced soon
+        </p>
       </div>
-      <h1 class="font-heading text-white text-3xl sm:text-4xl md:text-5xl font-medium leading-snug mb-5">
-        East Saxons CC 1's<br />
-        <span class="text-gold">vs TBD</span>
-      </h1>
-      <p class="text-white/50 text-base sm:text-lg max-w-md mx-auto">
-        Brentwood, Essex &mdash; Fixture details to be announced soon
-      </p>
     </div>
   </section>
 
   <!-- Vision & Mission -->
   <main class="flex-1">
+    <!-- Upcoming fixtures per XI (fixtures.js) -->
+    <section class="py-14 sm:py-16 bg-gray-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center gap-4 mb-8">
+          <h2 class="font-heading text-navy text-xl sm:text-2xl whitespace-nowrap">Upcoming Fixtures</h2>
+          <div class="flex-1 h-px bg-gold/60"></div>
+          <a href="schedule.html" class="text-xs font-semibold uppercase tracking-wider text-navy hover:text-gold whitespace-nowrap">Full schedule &rarr;</a>
+        </div>
+        <div data-es-upcoming-teams></div>
+      </div>
+    </section>
     <section class="py-16 sm:py-20 bg-white">
       <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class="flex items-center gap-4 mb-10">
@@ -149,6 +164,7 @@
     <p>&copy; 2026 East Saxons CC &bull; Follow us on Instagram, Twitter &amp; Facebook</p>
   </footer>
 
+  <script type="module" src="fixtures.js"></script>
   <script src="nav.js" defer></script>
 </body>
 

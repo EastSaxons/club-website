@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Schedule | East Saxons CC</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="fixtures.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -74,16 +75,27 @@
   <div class="bg-navy">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
       <h1 class="font-heading text-white text-2xl sm:text-3xl mb-1">Match Schedule</h1>
-      <p class="text-white/50 text-sm">East Saxons Cricket Club &mdash; 2026 Season</p>
+      <p class="text-white/50 text-sm">East Saxons Cricket Club</p>
     </div>
   </div>
 
   <main class="flex-1 py-12 sm:py-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <!-- Upcoming fixtures with team + month filters (fixtures.js reads data/fixtures.json) -->
+      <div class="flex items-center gap-4 mb-6">
+        <h2 class="font-heading text-navy text-lg whitespace-nowrap">Upcoming Fixtures</h2>
+        <div class="flex-1 h-px bg-gold/60"></div>
+      </div>
+      <div data-es-schedule class="mb-16">
+        <noscript>
+          <p class="text-sm text-gray-500 text-center">Fixtures need JavaScript. View them on
+            <a class="text-navy underline" href="https://eastsaxons.play-cricket.com/Matches">Play-Cricket</a>.</p>
+        </noscript>
+      </div>
 
       <!-- Section header -->
       <div class="flex items-center gap-4 mb-8">
-        <h2 class="font-heading text-navy text-lg whitespace-nowrap">Fixtures &amp; Results</h2>
+        <h2 class="font-heading text-navy text-lg whitespace-nowrap">More on Play Cricket</h2>
         <div class="flex-1 h-px bg-gold/60"></div>
       </div>
 
@@ -170,6 +182,7 @@
     <p>&copy; 2026 East Saxons CC &bull; Follow us on Instagram, Twitter &amp; Facebook</p>
   </footer>
 
+  <script type="module" src="fixtures.js"></script>
   <script src="nav.js" defer></script>
 </body>
 </html>
